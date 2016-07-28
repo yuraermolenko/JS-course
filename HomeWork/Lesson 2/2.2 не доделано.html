@@ -1,0 +1,40 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    <script>
+        
+            var strCount = function (obj) {
+                var count = 0;
+                for (var i in obj) {
+                    if (typeof obj[i] === "string" && obj.hasOwnProperty(i)) {
+                        count++;
+                    }
+                    else if (typeof obj[i] === "object" && obj.hasOwnProperty(i)) {
+                        count += strCount(obj[i]);
+                    }
+                    else if (Array.isArray(obj[i]) && obj.hasOwnProperty(i)) {
+                        for (var j in obj[i]) {
+                            count += strCount(obj[i][j]);
+                        }
+                    }
+                }
+                return count;
+            }
+        ;
+       alert( strCount({
+            first: "1",
+            second: "2",
+            third: false,
+            fourth: ["anytime", 2, 3, 4],
+            fifth: null,
+            six: { a: "b", c: ["d", 5, 3] } 
+        }));
+        
+    </script>
+</body>
+</html>

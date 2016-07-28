@@ -1,0 +1,24 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    <script>
+        function Summator() {
+            this.run = function () {
+                this.a = +prompt('a?');
+                this.b = +prompt('b?');
+                return this.sum();
+            }
+            this.sum = function () {
+                return alert(this.a + this.b);
+            }
+        }
+        var x = new Summator();
+        x.run();
+    </script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    <script>
+        function runString(arg, obj) {
+            var myFunc = new Function(obj.param, obj.func);
+            return myFunc(arg);
+        };
+        var arg = 4;                     // аргумент для функции runString
+    obj = {
+        param: 'num',                  // имя параметра для функции в свойстве func
+        func: 'return Math.sqrt(num)'  // функция, которая должна быть вызванв с  агрументом arg
+    };
+
+    alert(runString(arg, obj));
+    </script>
+</body>
+</html>

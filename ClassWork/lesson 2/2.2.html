@@ -1,0 +1,29 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    <script>
+        function makeCounter() {
+            var counter = 0;
+            return function () {
+                return alert(++counter);
+            }
+        }
+            var func=makeCounter();
+            func();
+            func();
+            var func2 = makeCounter();
+            func2();
+            func2();
+            func2();
+
+          
+
+       
+    </script>
+</body>
+</html>

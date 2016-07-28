@@ -1,0 +1,28 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    <script>
+        function sumArgs() {
+            var arg = arguments;
+            var sum=0;
+            function func() {
+                for (var i = 0; i < this.length; i++) {
+
+                    sum += this[i];
+
+                };
+                return sum;
+            };
+            return func.call(arg)
+           
+                          
+        }
+        alert(sumArgs(1,2,3,4,5))
+    </script>
+</body>
+</html>
