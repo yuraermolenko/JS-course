@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"> 
+<head> 
+<meta charset="utf-8">
+<title>Метод bind </title> 
+<!-- 
+Перепишите с использованием встроенного метода bind:
+
+function bind(func, context) {
+  return function() {
+    return func.apply(context, arguments);
+  };
+}
+
+var user = {
+  firstName: "Вася",
+  sayHi: function() {
+    alert( this.firstName );
+  }
+}; 
+
+var f = bind(user.sayHi, user);  
+f(); 
+
+-->
+<script>
+	
+var user = {
+  firstName: "Вася",
+  sayHi: function() {
+    alert( this.firstName );
+  }
+}; 
+
+var g = user.sayHi.bind(user);  
+g(); // "Вася"
+</script>
+</head> 
+	
+<body> 
+
+</body>
+</html>
