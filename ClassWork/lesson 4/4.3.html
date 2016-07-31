@@ -1,0 +1,25 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Одалживание методов</title>
+    <!--
+    Напишите функцию joinArgs, которая выводит свои аргументы, разделенные символом ‘*’ на экран в виде строки. Используйте прием “одалживания методов”. У вас должно получиться:
+
+joinArgs(1,2,3) // 1*2*3 
+joinArgs('hello', 'world', '!') // hello*world*!
+    -->
+    <script>
+        function joinArgs() {
+            var myJoin = [].join;
+            return myJoin.call(arguments,'*')
+        }
+        alert(joinArgs(1, 2, 3)) // 1*2*3 
+        alert(joinArgs('hello', 'world', '!')) // hello*world*!
+    </script>
+</head>
+<body>
+
+</body>
+</html>
