@@ -1,0 +1,30 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Homework 4.1</title>
+    <!--
+     Представьте, что в JavaScript нет метода call, есть только метод apply. Используя apply, напишите метод call.    
+    -->
+</head>
+<body>
+    <script>
+        function myCall(func, context, args) {
+            arguments.slice = [].slice;
+           var funcArgs = arguments.slice(2);
+            
+            return func.apply(context, funcArgs);
+        }
+        function sayHi(a,b) {
+            alert('Hello, my name is ' + this.name + ' and I am ' + this.age + ' years old!');
+            alert(a + b);
+        };
+        var user = {
+            name: 'Vasya',
+            age: 25
+        };
+        myCall(sayHi, user, 5, 10, 20);
+    </script>
+</body>
+</html>
