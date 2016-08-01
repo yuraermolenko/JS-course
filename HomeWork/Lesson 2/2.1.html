@@ -3,21 +3,24 @@
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="utf-8" />
-    <title></title>
+    <title>Homework 2.1</title>
+    <!--
+    Напишите функцию, которая принимает 1 параметр. 
+    При первом вызове она его запоминает, при втором - суммирует переданный параметр с параметром, переданным при предыдущем вызове. 
+    -->
 </head>
 <body>
     <script>
-        function func(a) {
-            var x = 0;
-            var a = a;
-            return function () {
-                return alert(x += a);
+        function sumFunc() {
+            var i = 0;
+            return function (a) {
+                return i += a;
             }
-        } (4);
-        var sum = func(a);
-        
-        sum(5);
-        sum(10);
+        }
+        var sum = sumFunc();
+        alert(sum(5));
+        alert(sum(4));
+        //Простите, сначала прислал совсем не тот вариант, перепутал файлы вероятно
     </script>
 </body>
 </html>
