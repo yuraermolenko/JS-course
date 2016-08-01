@@ -1,0 +1,28 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Homework 5.3</title>
+    <!--
+        
+    Сделайте таймер обратного отсчета, который выполняет обратный отсчет от зданого числа до нуля. 
+        Когда доходит до нуля - выводит сообщение о том, что отсчет закончен.
+    Например, var timer=10, каждую секунду на странице меняется числа - 10, 9, 8... и так далее до нуля.
+    -->
+</head>
+<body>
+<script>
+    var count = 10;
+    var revTimer = setTimeout(function tick() {
+        document.write(count + ' ');
+        count--;
+        revTimer = setTimeout(tick, 1000);
+    }, 1000);
+    setTimeout(function () {
+        clearInterval(revTimer);
+        alert('Отсчет закончен');
+    }, 12000);
+</script>
+</body>
+</html>
