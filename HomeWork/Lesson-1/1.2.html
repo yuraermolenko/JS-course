@@ -1,0 +1,30 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    <script>
+        var arr = [1, 90, 789, 56, 45, 34, 678, 78, -90, -6, 5, 3, 6]; 
+        for (var j=0;(j<arr.length-1);j++)
+        {
+            var swipped = false;
+            var i = 0;
+            while (i < (arr.length - 1)) {
+                if (arr[i]>arr[i+1]){
+                    var c=arr[i];
+                    arr[i]=arr[i+1];
+                    arr[i+1]=c;
+                    swipped=true}
+                i++;
+            }
+            if(!swipped)
+                break;
+            }
+        document.write(arr);
+    </script>
+
+</body>
+</html>
