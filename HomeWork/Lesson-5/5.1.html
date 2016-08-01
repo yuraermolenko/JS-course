@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Homework 5.1</title>
+    <!--
+        
+    Напишите программу, которая принимает математическое выражение (используйте prompt) и результат его получает через eval. 
+        При ошибке нужно выводить сообщение и просить изменить некорректный ввод. 
+        Ошибкой считается не только некорректное выражение, такое как 2+, но и выражение, возвращающее NaN, например 0/0.-->
+</head>
+<body>
+    <script>
+        
+            try{
+              
+          var str = prompt("Введите математическое выражение");
+          var result = eval(str);              
+          if (!isFinite(result) || str.length < 2) {
+              throw new SyntaxError("Выражение неккоректно");
+          }
+          else {alert(result)};
+          }            
+            catch(e){              
+                alert(e.name);
+                alert(e.message);
+                alert('Пожалуйста, повторите ввод')
+               }
+                
+
+            
+    </script>
+</body>
+</html>
