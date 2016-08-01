@@ -3,34 +3,33 @@
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="utf-8" />
-    <title></title>
+    <title>Homework 2.2</title>
+    <!--
+    Создайте функцию strCount, которая принимает один аргумент (объект) и считает количество свойств строкового типа. 
+    -->
 </head>
 <body>
     <script>
-        
-            var strCount = function (obj) {
-                var counter = 0;
-                for (var i in obj) {
-                    if (typeof obj[i] === "string") {
-                        counter++;
-                    }
-                    else if (typeof obj[i] === "object" ) {
-                        counter += strCount(obj[i]);
-                    }
-                    
-                    }
+   var strCount = function (obj) {
+            var counter = 0;
+            for (var key in obj) {
+                if (typeof obj[key] === "string") {
+                    counter++;
                 }
-                return counter;
+                else if (typeof obj[key] === "object" ) {
+                    counter += strCount(obj[key]);
+                }
             }
-        ;
-       alert( strCount({
+            return counter;
+        }                        
+        alert( strCount({
             first: "1",
             second: "2",
             third: false,
             fourth: ["anytime", 2, 3, 4],
-            fifth: null;
+            fifth: null,
+            six: {a:"something",b:[3,5,"hidden"]}
         }));
-        
     </script>
 </body>
 </html>
