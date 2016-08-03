@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Homework 6.3</title>
+</head>
+<body>
+<script>
+    (function(){
+        if (!Element.prototype.closest) {
+            Element.prototype.closest=function(css){
+                var node=this;
+                while(node){
+                    if (node.matches(css)){
+                        return node;
+                    }
+                    else{
+                        node=node.parentElement;
+                    }
+                }
+                return null;
+            }
+        }
+    })()
+</script>
+</body>
+</html>
