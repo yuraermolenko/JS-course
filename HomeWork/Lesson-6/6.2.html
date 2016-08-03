@@ -8,16 +8,16 @@
         window.onload=function() {
             var elem = document.createElement('div');
             elem.innerHTML = '<b>Новый элемент</b>';
-            copyElem = elem.cloneNode(true);
             function insertAfter(elem, refElem) {
-                refElem.parentNode.insertBefore(elem, refElem.nextSibling);
+                copyElem = elem.cloneNode(true);
+                refElem.parentNode.insertBefore(copyElem, refElem.nextSibling);
             }
             var body = document.body;            
             // вставить elem после первого элемента
             insertAfter(elem, body.firstChild); // <--- должно работать
 
             // вставить elem за последним элементом
-            insertAfter(copyElem, body.lastChild); // <--- должно работать
+            insertAfter(elem, body.lastChild); // <--- должно работать
         }
     </script>
 </head>
