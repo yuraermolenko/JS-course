@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <style>
+        #div1 {
+            left:300px;
+            top:300px;
+            position: fixed;
+        }
+        button{
+         
+        }
+        .tooltip {
+            position:fixed;
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            var tooltip
+            document.addEventListener("mouseover", function (e) {
+                target = e.target;
+                if (!target.hasAttribute('data-tooltip')) return;
+                tooltip = document.createElement("div")
+                tooltip.innerHTML = target.getAttribute('data-tooltip');
+                tooltip.className = "tooltip";
+                var coordsTarget = target.getBoundingClientRect();
+
+
+                tooltip.style.left = coordsTarget.left +/*(target.clientWidth-tooltip.clientWidth)/2 +*/  "px";
+                tooltip.style.top = coordsTarget.top /*-tooltip.clientHeight*/ - 40 + "px";// закомментированное - почему то не считывает tooltip.clientWidth и tooltip.clientHeight :(
+                document.body.appendChild(tooltip);
+            });
+            document.addEventListener("mouseout", function (e) {
+                target = e.target;
+                if (tooltip) {
+                    tooltip.remove();
+                }
+
+            });
+        }
+      </script>
+</head>
+<body>
+    <div id="div1">
+        <button data-tooltip="подсказка длиннее, чем элемент">Короткая кнопка</button>
+        <button data-tooltip="HTML<br>подсказка">Ещё кнопка</button>
+    </div>
+</body>
+</html>
