@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <style>
+        table{
+            border-collapse:collapse;
+        }
+        .whiteCell{
+            width:20px;
+            height:20px;
+            background-color: white;
+           border: 1px solid black;
+        }
+        .blackCell{
+            width:20px;
+            height:20px;
+            background-color: black;
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<script>
+    window.onload=function(){
+        var table = document.createElement("table");
+        function makeBoard(rows, cols) {
+            for (i = 1; i <= rows; i++) {
+                var row = document.createElement("tr");
+                table.appendChild(row);
+                for (j = 1; j <= cols; j++) {
+                    var col = document.createElement("td");
+                    if ((i + j) % 2 == 0) {
+                        col.className = "blackCell";
+                    }
+                    else {
+                        col.className = "whiteCell";
+                    }
+                    row.appendChild(col);
+                }
+            }
+           document.body.appendChild(table); 
+        }
+        makeBoard(5, 5);
+    }
+</script>
+<body>
+
+</body>
+</html>
