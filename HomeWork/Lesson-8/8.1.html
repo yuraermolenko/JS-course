@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <style>
+        div{
+            width:200px;
+            height: 100px;
+            background-color: lightslategray;
+        }
+    </style>
+    <script>
+        window.onload = function () {
+           
+
+            document.forms[0].addEventListener("submit", function (e) {
+                if (document.getElementById("log").value.length == 0 || document.getElementById("log").value.match(/\d/)!==null)
+                {
+                   
+                    e.preventDefault();
+                    document.getElementById("log").style.cssText="background-color:red"
+                }
+                if (document.getElementById("pass").value.length == 0||document.getElementById("pass").value.match(/\$/)!==null) {
+                   
+                    e.preventDefault();
+                    document.getElementById("pass").style.cssText="background-color:red"
+                }
+                if (document.getElementById("tel").value.length == 0||document.getElementById("tel").value.match(/\D/)!==null) {
+                   
+                    e.preventDefault();
+                    document.getElementById("tel").style.cssText = "background-color:red"
+
+                }
+            }, false);
+          
+        }
+    </script>
+</head>
+<body>
+    <div>
+        <form action="/test.html" method="post">
+    <input id="log" type="text" value="Login" />
+    <input id="pass" type="text" value="Password" />
+    <input id="tel" type="text" value="Telephone" />
+    <input id="btn" type="submit" name="Send" />
+</form>
+</div>
+</body>
+</html>
