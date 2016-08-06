@@ -4,52 +4,48 @@
 <head>
     <meta charset="utf-8" />
     <title></title>
-    <!--
-Посмотрите пожалуйста код - не могу найти причину невыполнения. 
-Отступы left & top высчитывает, а сам элемент не ставит на нужное место.   
--->
     <style type="text/css">
     #div1 {
         width: 100px;
         height: 100px;
         
-        position: fixed;
+        position: absolute;
         left: 300px;
         top: 300px;
     }
    .div{    width: 100px;
             height: 100px;
             background-color:green;
-
+            position:absolute;
    }
     }
     </style>
     <script>
         window.onload = function () {
             var elem = document.createElement("div");
-            elem.className = 'div';
-            document.body.appendChild(elem);
+            elem.className = 'div';            
             var anchor = document.getElementById("anchor");
             coordAnchor = anchor.getBoundingClientRect()
             function positionAt(anchor, position, elem) {
                 switch (position) {
                     case 'top':
                         elem.style.bottom = coordAnchor.top + "px";
-                        elem.style.left = coordAnchor.left + anchor.clientWidth / 2 - elem.clientWidth / 2 + "px";
+                        elem.style.left = coordAnchor.left + anchor.clientWidth / 2 - elem.style.width / 2 + "px";
                         break
                     case 'left':
                         elem.style.right = coordAnchor.left + "px";
-                        elem.style.top = coordAnchor.top + anchor.clientHeight / 2 + elem.clientHeight / 2 + "px";
+                        elem.style.top = coordAnchor.top + anchor.clientHeight / 2 + elem.style.height / 2 + "px";
                         break
                     case 'right':
-                        elem.style.left = coordAnchor.right + "px";
-                        elem.style.top = coordAnchor.top + anchor.clientHeight / 2 + elem.clientHeight / 2 + "px";
+                        elem.style.left = coordAnchor.right +20+ "px";
+                        elem.style.top = coordAnchor.top + anchor.clientHeight / 2 + elem.style.height / 2 + "px";
                         break
                     case 'bottom':
-                        elem.style.left = coordAnchor.left + anchor.clientWidth / 2 - elem.clientWidth / 2 + "px";
+                        elem.style.left = coordAnchor.left + anchor.clientWidth / 2 - elem.style.width / 2 + "px";
                         elem.style.top = coordAnchor.bottom + "px";
                         break
                 }
+                document.body.appendChild(elem);
             }
             positionAt(anchor,"right",elem);
         }
