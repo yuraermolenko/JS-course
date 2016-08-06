@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script>
+        /* DOM level 0 */
+            //window.onload = function () {
+            //    var a = document.getElementById("a").value;
+            //    var b = document.getElementById("b").value;
+            //    var sum = document.getElementById("+");
+            //    var subtr = document.getElementById("-");
+            //    var mul = document.getElementById("*");
+            //    var divide = document.getElementById("/");
+           
+            //    sum.onclick = function () {
+            //        return document.getElementById("result").value = +document.getElementById("a").value + +document.getElementById("b").value;
+            //    };
+            //    subtr.onclick = function () {
+            //        return   document.getElementById("result").value = +document.getElementById("a").value- document.getElementById("b").value;
+            //    };
+            //    mul.onclick = function () {
+            //        return   document.getElementById("result").value = +document.getElementById("a").value * document.getElementById("b").value;
+            //    };
+            //    divide.onclick = function () {
+            //        return document.getElementById("result").value = +document.getElementById("a").value / document.getElementById("b").value;
+            //    };
+            //}
+        /* DOM level 2 */
+            window.onload = function () {
+                var a = document.getElementById("a").value;
+                var b = document.getElementById("b").value;
+                var sum = document.getElementById("+");
+                var subtr = document.getElementById("-");
+                var mul = document.getElementById("*");
+                var divide = document.getElementById("/");
+                sum.addEventListener('click', function () {
+                    return document.getElementById("result").value = +document.getElementById("a").value + +document.getElementById("b").value;
+                });
+                subtr.addEventListener('click', function () {
+                    return document.getElementById("result").value = +document.getElementById("a").value - document.getElementById("b").value;
+                });
+                mul.addEventListener('click', function () {
+                    return document.getElementById("result").value = +document.getElementById("a").value * document.getElementById("b").value;
+                });
+                divide.addEventListener('click', function () {
+                    return document.getElementById("result").value = +document.getElementById("a").value / document.getElementById("b").value;
+                });
+            }
+
+    </script>
+</head>
+<body>
+   <div>
+       <table>
+           <tr>
+               <td><input id="a" type="text" value="0"/></td>
+               <td><input id="b" type="text" value="0"/></td>
+           </tr>
+           <tr>
+               <td><input id="+" type="button" value="+"</td>
+               <td><input id="-" type="button" value="-"</td>               
+           </tr>
+           <tr>
+               <td><input id="*" type="button" value="*"</td>
+               <td><input id="/" type="button" value="/"</td> 
+           </tr>
+           <tr>
+               <td><input id="result" type="text" value="0" /></td>
+           </tr>
+       </table>
+   </div>
+</body>
+</html>
