@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title><style>
+    body{
+        margin:0px;
+        overflow:hidden;
+    }
+    #div{
+        width:150px;
+        height:150px;
+       position: absolute;
+       left:300px;
+       top:300px;
+      
+    }
+    #div1{
+        border-radius: 50%;
+        width:100px;
+        height:100px;
+        background-color:red;
+        text-align:center;
+         margin: auto;
+         margin-top: 25px;
+          line-height: 100px;
+
+    }</style>
+    <script>
+        window.onload = function () {
+            var div = document.getElementById("div");
+            div.addEventListener("mousemove", function (e) {
+                var mouseX = e.clientX;
+                var mouseY = e.clientY;
+                var coordDiv1 = e.target.firstElementChild.getBoundingClientRect();
+             
+                if (mouseX <= coordDiv1.left) {
+                    div.style.left = coordDiv1.left + 50 + "px";
+
+                }
+                if (mouseX >= coordDiv1.right) {
+                    div.style.left = coordDiv1.left - 50 + "px";
+                }
+                if (mouseY <= coordDiv1.top) {
+                    div.style.top = coordDiv1.top + 50 + "px";
+                }
+                if (mouseY >= coordDiv1.bottom) {
+                    div.style.top = coordDiv1.top - 50 + "px";
+                }
+                var coordDiv = e.target.firstElementChild.getBoundingClientRect();
+                if (coordDiv.left <= 0) {
+                    div.style.left = document.documentElement.clientWidth - div.style.width-125 + "px";
+                }
+                if (coordDiv.right >= document.documentElement.clientWidth) {
+                    div.style.left = 0 -25+ "px";                  
+                }
+                if (coordDiv.top <= 0) {
+                    div.style.top = document.documentElement.clientHeight - div.style.height-125 + "px";
+                }
+                if (coordDiv.bottom >= document.documentElement.clientHeight) {
+                    div.style.top = 0-25 + "px";
+                }
+            });
+        }
+    </script>
+</head>
+<body><div id="div">
+    <div id="div1">Скидка</div></div>
+</body>
+</html>
