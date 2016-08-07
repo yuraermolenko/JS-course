@@ -12,7 +12,7 @@ window.onload = function() {
 		var user_data_b = document.getElementById('b').value;
 
 			var xhr = new XMLHttpRequest();
-			xhr.open('POST', 'CalcHandler.ashx');			
+			xhr.open('POST', 'CalcHandler.ashx',true);			
             xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");          
 			xhr.send('a=' + user_data_a + '&b=' + user_data_b);
 		xhr.onload = function() {
