@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script>
+        window.onload = function () {
+            var ul = document.querySelector("ul");
+            ul.addEventListener("click", function (e) {
+                var target = e.target;
+                if (target.tagName != "LI") return;
+                target.style.background = "red";
+
+            })
+        }
+    </script>
+</head>
+<body>
+    <ul>
+        <li>Первый элемент</li>
+        <li>Второй элемент</li>
+        <li>Третий элемент</li>
+        <li>Четвертый элемент</li>
+        <li>Пятый элемент</li>
+    </ul>
+</body>
+</html>
