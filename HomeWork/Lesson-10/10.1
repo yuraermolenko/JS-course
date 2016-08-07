@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    
+    <script>
+        window.onload = function () {
+            document.getElementById("btn").onclick = function () {
+                var xhr1 = new XMLHttpRequest();          
+                xhr1.open("GET", "1.html", true); 
+
+
+                xhr1.onreadystatechange = function () {
+                    if (xhr1.readyState == 4) { // если получен ответ
+                        if (xhr1.status == 200) { // и если статус код ответа 200
+                            document.getElementById("output").innerHTML += xhr1.responseText; // responseText - текст ответа полученного с сервера.
+                        }
+                    }
+                }
+
+                xhr1.send();
+                xhr2 = new XMLHttpRequest();
+
+                xhr2.open("GET", "2.html", true);
+
+
+                xhr2.onreadystatechange = function () {
+                    if (xhr2.readyState == 4) { // если получен ответ
+                        if (xhr2.status == 200) { // и если статус код ответа 200
+                            document.getElementById("output").innerHTML += xhr2.responseText; // responseText - текст ответа полученного с сервера.
+                        }
+                    }
+                }
+
+                xhr2.send();
+            }
+        }
+    </script>
+</head>
+<body>
+    <input id="btn" type="button" value="Get 1,2" />
+    <p id="output"></p>
+</body>
+</html>
