@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script>
+    var count = 1;
+    var revTimer = setTimeout(function tick() {
+        console.log(count + ' ');
+        count++;
+        revTimer = setTimeout(tick, 100);
+    }, 100);
+    setTimeout(function () {
+        clearInterval(revTimer);     
+    }, 2100);// 20 тик + время таймаута первой функции
+    </script>
+</head>
+<body>    
+</body>
+</html>
