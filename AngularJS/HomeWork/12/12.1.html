@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" ng-app="12.1">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.js"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
+    <script>
+        var module = angular.module("12.1", [])
+        .controller("12.1Ctrl", function ($scope) {
+            $scope.sum = function () {
+                return $scope.result = parseInt($scope.a) + parseInt($scope.b)
+            };
+            $scope.negSum = function () {
+                return $scope.result = parseInt($scope.a) - parseInt($scope.b)
+            };
+            $scope.mul = function () {
+                return $scope.result = parseInt($scope.a) * parseInt($scope.b)
+            };
+            $scope.div = function () {
+                return $scope.result = parseInt($scope.a) / parseInt($scope.b)
+            }
+        });
+   </script>
+</head>
+<body ng-controller="12.1Ctrl">
+<form class="form-inline">
+    <div class="form-group">
+        <input type="text" ng-model="a" />
+        <input type="text" ng-model="b" /><br />
+        <input type="button" ng-click="sum()" value="+" />
+        <input type="button" ng-click="negSum()" value="-" />
+        <input type="button" ng-click="mul()" value="*" />
+        <input type="button" ng-click="div()" value="-" /><br />
+        <h3>{{result}}</h3>
+    </div>
+</form>
+
+</body>
+</html>
