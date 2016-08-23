@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" ng-app="myApp">
+<head>
+    <meta charset="utf-8" />
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.js"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
+    <style>
+        .square {
+            background-color: lightgreen;
+             border: 1px solid black;
+            width: 100px;
+            height: 100px;
+            padding: 10px;
+            margin: 10px;
+              text-align:center;
+        }
+
+        .circle {
+            border: 1px yellow;
+            border-radius:50%;
+            width: 100px;
+            height: 100px;
+            padding: 10px;
+            margin: 10px;
+            background-color:darkblue;
+            text-align:center;
+        }
+        .rectangle{
+             border: 1px black;
+             width: 400px;
+            height: 100px;
+            padding: 10px;
+            margin: 10px;
+            background-color:lightseagreen;
+              text-align:center;
+        }
+    </style>
+    <script>
+        var app = angular.module('myApp', [])
+        .controller('mainCtrl', function ($scope) {
+
+            $scope.styleObj = {
+                square:true,
+                circle: false,
+                rectangle:false
+            }
+        })
+    </script>
+</head>
+<body>
+    <div class="container" ng-controller="mainCtrl">
+        <input type="checkbox" ng-model="styleObj.square" />Square<br />
+        <input type="checkbox" ng-model="styleObj.circle" />Circle<br />
+        <input type="checkbox" ng-model="styleObj.rectangle" />Rectangle<br />
+        <div ng-class="styleObj">Some text</div>
+    </div>
+</body>
+</html>
