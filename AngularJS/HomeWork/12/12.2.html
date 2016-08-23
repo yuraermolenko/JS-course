@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" ng-app="myApp">
+<head>
+    <meta charset="utf-8" />
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.js"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
+    <title></title>
+    <script>
+
+        var app = angular.module('myApp', [])
+        .controller('mainCtrl', function ($scope) {
+            $scope.options = [{ display: 'Таблица', value: 'table' }, { display: 'Список', value: 'list' }];
+
+            $scope.items = [{ name: "B Item", price: 10.9, category: "Category 1", count: 10, tax: 1.12, expiration: 10 },
+             { name: "A Item", price: 1.1, category: "Category 1", count: 8, tax: 0.55, expiration: 12 },
+             { name: "D Item", price: 2.6, category: "Category 2", count: 7, tax: 0.22, expiration: 5 },
+             { name: "C Item", price: 17.5, category: "Category 2", count: 33, tax: 2.77, expiration: 10 }];
+
+            $scope.mode = $scope.options[0];
+
+        })
+
+    </script>
+</head>
+<body ng-controller="mainCtrl">
+    <select class="form-control" ng-model="mode" ng-options="item.display for item in options track by item.value"></select>
+    <div ng-switch on="mode.value">
+        <div ng-switch-when="table">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Price</th>
+                        <th>Category</th>
+                        <th>Count</th>
+                        <th>Tax</th>
+                        <th>Expiration</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="item in items">
+                        <td>{{item.name}}</td>
+                        <td>{{item.price}}</td>
+                        <td>{{item.category}}</td>
+                        <td>{{item.count}}</td>
+                        <td>{{item.tax}}</td>
+                        <td>{{item.expiration}}</td>
+                    </tr>
+                <tbody>
+            </table>
+        </div>
+        <div ng-switch-when="list">
+            <ul> <li ng-repeat="item in items" class="list-group-item list-group-item-info">{{item.name}}:{{item.price}}:{{item.category}}:{{item.count}}:{{item.tax}}:{{item.expiration}}</li> </ul>
+        </div>
+    </div>
+</body>
+</html>
