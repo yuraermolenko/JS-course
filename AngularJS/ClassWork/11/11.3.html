@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html ng-app="11.3" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.js"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
+    <title></title>
+
+    <script>
+        var app = angular.module('11.3', [])
+        .controller('mainCtrl', function ($scope) {
+        })
+
+    </script>
+</head>
+<body>
+    <div class="panel panel-primary" ng-controller="mainCtrl">
+        <h3>Enter message: </h3>
+        <input class="input-lg" type="text" ng-model="message">
+        <h1>{{message}}</h1>
+    </div>
+</body>
+</html>
