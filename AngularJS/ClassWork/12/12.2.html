@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+
+<html  ng-app="12.2app" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.js"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
+    <script>
+        var module = angular.module("12.2app", [])
+        .controller("12.2Ctrl", function ($scope) {
+            $scope.items = [
+            { name: "B Item", price: 10.9, category: "Category 1", count: 10, tax: 1.12, expiration: 10 },
+            { name: "A Item", price: 1.1, category: "Category 1", count: 8, tax: 0.55, expiration: 12 },
+            { name: "D Item", price: 2.6, category: "Category 2", count: 7, tax: 0.22, expiration: 5 },
+            { name: "C Item", price: 17.5, category: "Category 2", count: 33, tax: 2.77, expiration: 10 }];
+            $scope.name = true;
+            $scope.price = true;
+            $scope.category = true;
+            $scope.count = true;
+            $scope.tax = true;
+            $scope.expiration = true;
+
+        })
+    </script>
+</head>
+    <body ng-controller="12.2Ctrl">
+        <form class="form-inline">
+            <div class="form-group">
+                <input type="checkbox" ng-model="name" />Name
+                <input type="checkbox" ng-model="price" />Price
+                <input type="checkbox" ng-model="category" />Category
+                <input type="checkbox" ng-model="count" />Count
+                <input type="checkbox" ng-model="tax" />Tax
+                <input type="checkbox" ng-model="expiration" />Expiration
+            </div>
+        </form>
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th ng-switch on="name"><span ng-switch-when="true">Name</span></th>
+                    <th ng-switch on="price"><span ng-switch-when="true">Price</span></th>
+                    <th ng-switch on="category"> <span ng-switch-when="true">Category</span></th>>
+                    <th ng-switch on="count"> <span ng-switch-when="true">Count</span></th>
+                    <th ng-switch on="tax"><span ng-switch-when="true">Tax</span></th>
+                    <th ng-switch on="expiration"><span ng-switch-when="true">Expiration</span></th>
+                </tr>
+            </thead>
+             <tr ng-repeat="item in items">
+                <td ng-switch on="name"><span ng-switch-when="true">{{item.name}}</span></td>
+                <td ng-switch on="price"><span ng-switch-when="true">{{item.price}}</span></td>
+                <td ng-switch on="category"> <span ng-switch-when="true">{{item.category}}</span></td>>
+                <td ng-switch on="count"> <span ng-switch-when="true">{{item.count}}</span></td>
+                <td ng-switch on="tax" ><span ng-switch-when="true">{{item.tax}}</span></td>
+                <td ng-switch on="expiration"><span ng-switch-when="true">{{item.expiration}}</span></td>
+            </tr>
+    </table>
+    </body>
+</html>
