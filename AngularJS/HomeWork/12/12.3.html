@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" ng-app="myApp">
+<head>
+    <meta charset="utf-8" />
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.js"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
+    <title></title>
+    <script>
+        //Не могу понять почему переключатели вопросов не работают :(
+        var app = angular.module('myApp', [])
+      .controller('mainCtrl', function ($scope) {
+          $scope.numbers = [1, 2, 3, 4, 5];
+          $scope.test = $scope.numbers[0];
+          $scope.firstQuestion = {
+              task: "Каков правильный ответ?",
+              answers: ["Вариант 1", "Вариант 2", "Вариант 3", "Вариант 4"]              
+          };
+          $scope.secondQuestion = {
+              task: "Каков неправильный ответ?",
+              answers: [
+                  "Правильный ответ", "Неправильный ответ", "Странный ответ","Лишний ответ"
+          ]
+          };
+          $scope.thirdQuestion = {
+              task:"Выберите невидимый ответ",
+              answers:[
+                  "Он здесь","Или здесь"," ","Вы его пропустили"
+              ]
+          };
+          $scope.fourthQuestion = {
+              task:"Когда началась Вторая Мировая Война?",
+              answers:[
+                  "Что?","1 сентября 1939","1941","Волынская резня была..."
+              ]
+          };
+          $scope.fifthQuestion = {
+              task:"Как вы относитесь к этому тесту?",
+              answers:[
+                  "Очень интересно!","Без комментариев","Глупо и посредственно",'"Хочу угодить разработчику"'
+              ]
+          }
+      })
+    </script>
+</head>
+<body ng-controller="mainCtrl">
+      <form class="form-inline">
+          <div class="form-group">
+              <label  ng-repeat="item in numbers">
+                  <input ng-model="test" name="test" type="radio" value="{{item}}">{{item}}
+              </label>             
+          </div>
+      </form> 
+    <div ng-switch on="test">
+        <div ng-switch-when="1">
+            <h2>{{firstQuestion.task}}</h2>
+            <div class="radio">
+                <label style="display:block" ng-repeat="item in firstQuestion.answers">
+                    <input type="radio" name="question1" ng-model="question1"  value="{{$index+1}}" >
+                  {{item}}<br />
+                </label>            
+            </div>
+        </div>
+        <div ng-switch-when="2">
+            <h2>{{secondQuestion.task}}</h2>
+            <div class="radio">
+                <label style="display:block" ng-repeat="item in secondQuestion.answers">
+                    <input type="radio" name="question2" ng-model="question2"  value="{{item}}">
+                    {{item}}<br />
+                </label>
+            </div>
+        </div>
+        <div ng-switch-when="3">
+            <h2>{{thirdQuestion.task}}</h2>
+            <div class="radio">
+                <label style="display:block" ng-repeat="item in thirdQuestion.answers">
+                    <input type="radio" name="question3" ng-model="question3"  value="{{item}}">
+                    {{item}}<br />
+                </label>
+            </div>
+        </div>
+        <div ng-switch-when="4">
+            <h2>{{fourthQuestion.task}}</h2>
+            <div class="radio">
+                <label style="display:block" ng-repeat="item in fourthQuestion.answers">
+                    <input type="radio" name="question4" ng-model="question4"  value="{{item}}">
+                    {{item}}<br />
+                </label>
+            </div>
+        </div>
+        <div ng-switch-when="5">
+            <h2>{{fifthQuestion.task}}</h2>
+            <div class="radio">
+                <label style="display:block" ng-repeat="item in fifthQuestion.answers">
+                    <input type="radio" name="question5" ng-model="question5"  value="{{item}}">
+                    {{item}}<br />
+                </label>
+            </div>
+        </div>
+    </div> 
+</body>
+</html>
