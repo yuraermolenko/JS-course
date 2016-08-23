@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+
+<html  ng-app="app11.2"lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.js"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
+    <script>
+        var module = angular.module("app11.2", [])
+        .controller("app11.2ctrl", function ($scope) {
+            $scope.message = "Hi!";
+            $scope.clickHandler = function () {
+                $scope.message = $scope.text;
+            }
+        })
+    </script>
+</head>
+<body ng-controller="app11.2ctrl">
+    <h1>{{message}}</h1>
+  
+    <input ng-model="text" />
+  
+    <button ng-click="clickHandler()">Click me!</button>
+</body>
+</html>
