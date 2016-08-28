@@ -1,0 +1,48 @@
+﻿<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" ng-app="myApp">
+<head>
+    <meta charset="utf-8" />
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.js"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
+    <title></title>
+    <style>
+        .custom {
+            font-size: 30px;
+            font-weight: bold;
+        }
+
+            .custom td {
+                border-bottom: 1px solid blue;
+            }
+    </style>
+    <script>
+
+        var app = angular.module('myApp', [])
+        .controller('mainCtrl', function ($scope) {
+             })
+
+        .directive('createForm', function () {
+
+            return function (scope, element, attributes) {
+
+                var form = angular.element('<form>');
+                element.append(form);
+                var userNameSpace = angular.element('<input type="text" class="input-lg form-control" placeholder="UserName"/>');
+                var loginSpace = angular.element('<input type="text" class="input-lg form-control" placeholder="Login"/>');
+                var passSpace = angular.element('<input type="password" class="input-lg form-control" placeholder="Password"/>');
+                var emailSpace = angular.element('<input type="email" class="input-lg form-control" placeholder="Email"/>');
+                form.append(userNameSpace);
+                form.append(loginSpace);
+                form.append(passSpace);
+                form.append(emailSpace);
+            }
+        })
+
+    </script>
+</head>
+<body>
+    <div class="panel" ng-controller="mainCtrl">
+        <div create-form class="well"></div>
+    </div>
+</body>
+</html>
