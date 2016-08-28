@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+    <title></title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.js"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
+    <script>
+        // $interval и $timeout сервисы-обертки над функциями window.setInterval() и window.setTimeout()
+        angular.module("myApp", [])
+        .controller("mainCtrl", function ($scope, $interval, $timeout, $window) {
+            $scope.start = function () {
+                $scope.time = 0;
+                timePromise=$interval(function () {
+                    $scope.time ++
+                }, 1000);
+            }
+            $scope.stop = function () {
+                $interval.cancel(timePromise);
+            }
+        })
+    </script>
+</head>
+<body ng-controller="mainCtrl" class="well">
+    <div class="panel panel-default">
+        <h4 class="panel-heading">Секундомер</h4>
+        <div class="panel-body">
+            <button class="btn btn-default" ng-click="start()">Start</button>
+            <button class="btn btn-default" ng-click="stop()">Stop</button>
+            The time is: {{time}}
+        </div>
+    </div>
+</body>
+</html>
