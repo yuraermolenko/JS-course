@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" ng-app="myApp">
+<head>
+    <meta charset="utf-8" />
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.js"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
+    <title></title>
+    <script>
+        var app = angular.module('myApp', [])
+        .controller('mainCtrl', function ($scope) {
+            $scope.items = [ "Item 1","Item 1","Item 2","Item 3","Item 4","Item 5","Item 5","Item 5", "Item 7", "Item 6"]
+
+            $scope.searchValue = 'Item 5';
+            $scope.setFilter = function (arg) {
+                $scope.filterValue = arg;
+            }
+
+            $scope.filterFunc = function (item) {
+                if (item == $scope.filterValue) {
+                    return item;
+                }
+            }
+        })
+
+
+    </script>
+</head>
+<body>
+    <div class="panel panel-primary" ng-controller="mainCtrl">
+        Search items by name!!! &nbsp; <input type="text" ng-model="searchValue">
+        <input type="button" value="Search" ng-click="setFilter(searchValue)" />
+      <div class="container">
+          <div ng-repeat="item in items|filter:filterFunc">
+              <p>{{item}}</p>
+          </div>
+      </div>
+    </div>
+</body>
+</html>
