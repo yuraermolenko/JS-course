@@ -1,0 +1,44 @@
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" ng-app="myApp">
+<head>
+    <meta charset="utf-8" />
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.js"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
+    <title></title>
+    <script>
+        var app = angular.module('myApp', [])
+        .controller('mainCtrl', function ($scope, $location, $anchorScroll) {
+
+            $location.path("");
+
+            $scope.itemCount = 100;
+
+            $scope.items = [];
+
+            for (var i = 0; i < $scope.itemCount; i++) {
+                $scope.items[i] = "Заголовок " + i;
+            }
+            $scope.show = function (id) {
+              
+                var hash = $location.hash(id);
+
+            
+            }
+
+        })
+
+
+    </script>
+</head>
+<body ng-controller="mainCtrl">
+    <p>
+        <ul>
+           <button class="btn btn-primary" ng-click="show('Заголовок 20')">К заголовку 20</button>
+            <button class="btn btn-primary" ng-click="show('Заголовок 40')">К заголовку 40</button>
+            <button class="btn btn-primary" ng-click="show('Заголовок 60')">К заголовку 60</button>
+            <button class="btn btn-primary" ng-click="show('Заголовок 80')">К заголовку 80</button>
+        </ul>
+    </p>     
+            <div ng-repeat="item in items" id="{{item}}">{{item}}</div>
+   
+</body>
+</html>
