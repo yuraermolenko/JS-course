@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" ng-app="myApp">
+<head>
+    <meta charset="utf-8" />
+    <script src="Task/Libraries/angular.js"></script>
+    <script src="Task/Libraries/angular_route.js"></script>
+    
+    <link href="Task/Libraries/bootstrap.css" rel="stylesheet" />
+    <title></title>
+    <script>
+        var app = angular.module('myApp', ['ngRoute'])
+        .config(function ($routeProvider) {
+
+            $routeProvider
+                .when('/', {
+                     templateUrl: 'Task/index.html',
+                })
+                .when('/view1', {
+                     templateUrl: 'Task/view1.html',
+                })
+                .when('/view2', {
+                     templateUrl: 'Task/view2.html'
+                })
+                .otherwise({
+                redirectTo: '/'
+            })
+        })
+
+
+    </script>
+</head>
+<body>
+    <div class="panel panel-primary well">
+        <ul class="nav nav-tabs">
+            <li><a href="#/home">Home</a></li>
+            <li><a href="#/view1">View1</a></li>
+            <li><a href="#/view2">View2</a></li>
+        </ul>
+    </div>
+    <div class="panel" ng-view></div>
+</body>
+</html>
