@@ -1,0 +1,46 @@
+﻿<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" ng-app="myApp">
+<head>
+    <meta charset="utf-8" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular-cookies.js"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
+    <title></title>
+    <script>
+        var app = angular.module('myApp', ['ngCookies'])
+            
+        .controller('mainCtrl', ['$scope',  'makeCookie', function ($scope, makeCookie) {
+
+            $scope.cookieId = '';
+            $scope.cookieVal = '';
+            $scope.output = [];
+            var myCookie = 'cookies on this site: ';
+        
+
+            $scope.setCookie = function () {
+              makeCookie($scope.cookieId, $scope.cookieVal, $scope.output)
+            }
+
+        }])
+        .factory('makeCookie', function ($cookies) {
+            return function (cookieId, cookieVal, output) {
+                var now = new Date(),
+             exp = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1);
+                $cookies.put(cookieId, cookieVal, { expires: exp });
+                var myCookie = $cookies.get(cookieId);
+                output.push({ val: myCookie, id: cookieId });
+            }
+        })
+
+
+    </script>
+</head>
+<body>
+    <div class="panel panel-primary" ng-controller="mainCtrl">
+        <label>cookie ID: <input class="input-lg" ng-model="cookieId"></label><br />
+        <label>cookie Value: <input class="input-lg" ng-model="cookieVal"></label><br />
+        <input type="button" class="btn-lg btn-success" value="Create Cookie" ng-click="setCookie()">
+        <h2 ng-repeat="item in output">value: &nbsp; {{item.val}}  &nbsp; id: {{item.id}}</h2>
+    </div>
+</body>
+</html>
