@@ -1,0 +1,11 @@
+﻿<form name="contactForm">
+    <label>username:   <input type="text" class="input-lg" name="userName" /></label>
+    <label>age:   <input type="text" class="input-lg" name="age" /></label>
+    <label>email: <input type="email" class="input-lg" name="userEmail" /></label>
+    <label>employed: <input type="checkbox" name="employed"></label>
+</form>
+<div class="container">
+    <ul>
+        <li  ng-repeat="item in items" ng-click="setParam(item.name,item.age,item.email,item.employed)" >name:{{item.name}},age:{{item.age}},email:{{item.email}},employed:{{item.employed}}</li>
+    </ul>
+</div>
