@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+    <title></title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.js"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
+    <script>
+        angular.module("myApp", [])
+        .controller("mainCtrl", function ($scope, $http) {
+
+            $scope.getItems = function () {
+
+            
+
+                var promise = $http.get("data/data.json");
+               
+                promise.then(fulfilled, rejected)
+            }
+
+            function fulfilled(response) {
+
+                console.log("Status: " + response.status); 
+                console.log("Type: " + response.headers("content-type")); 
+                console.log("Length: " + response.headers("content-length"));
+
+                $scope.items = response.data; 
+            }
+
+            function rejected(error) {
+                console.error(error.status);
+                console.error(error.statusText);
+            }
+        });
+    </script>
+</head>
+<body ng-controller="mainCtrl">
+    <div id="tasksPanel" class="panel panel-primary">
+        <div class="panel-heading">
+            <div class="panel-title">
+                <button class="btn btn-success" ng-click="getItems()">
+                    <h2>Get Items</h2>
+                </button>
+            </div>
+        </div>
+        <table class="table">
+            <tr ng-repeat="item in items">
+                <td>{{item.name}}</td>
+                <td>{{item.price}}</td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>
