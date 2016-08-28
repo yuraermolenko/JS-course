@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" ng-app="myApp">
+<head>
+    <meta charset="utf-8" />
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.js"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
+    <title></title>
+    <script>
+        var app = angular.module('myApp', [])        
+       .controller('mainCtrl', function ($scope, $interval) {
+          $scope.counter = 0;
+          var interval;
+          $scope.startCounter = function () {
+              interval = $interval(function () {
+                  $scope.counter++;
+              }, 1000)
+          }       
+      })
+       
+      .directive('countDir', function () {
+          return {
+              restrict: 'A',
+              template: '   <input type="button" class="btn-lg btn-success" ng-click="startCounter()" value="Start counter"> <h1>{{counter}}</h1> ',
+          }
+      })
+
+    </script>
+</head>
+<body>
+    <div class="panel" ng-controller="mainCtrl">
+        <div count-dir>
+        </div>
+    </div>
+</body>
+</html>
