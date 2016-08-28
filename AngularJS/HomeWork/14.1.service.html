@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" ng-app="myApp">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.js"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
+    <script>
+        var module = angular.module("myApp", [])
+       
+        var sum = function () {
+            this.sum = function (a,b  ) { return result = parseInt(a) + parseInt(b) };
+            
+        }
+
+        var negSum = function () {
+            this.negSum = function (a, b ) { return result = parseInt(a) - parseInt(b) };
+          
+        }
+      
+        var mul = function () {
+            this.mul = function (a, b) { return result = parseInt(a) * parseInt(b) };
+        }
+        var div = function () {
+            this.div = function (a, b) { return result = parseInt(a) / parseInt(b) };
+         
+        }
+            module.service("getSum",sum).service("getNegSum",negSum).service("getMul",mul).service("getDiv",div)
+        .controller("mainCtrl", function ($scope, getSum, getNegSum, getMul, getDiv) {
+            $scope.result = 0;
+            $scope.sum=function(){
+              
+                $scope.result=getSum.sum($scope.a, $scope.b);
+            };
+            $scope.negSum=function(){
+                $scope.result = getNegSum.negSum($scope.a, $scope.b);
+            };
+            $scope.mul=function(){
+                $scope.result = getMul.mul($scope.a, $scope.b);
+            };
+            $scope.div=function(){
+                $scope.result = getDiv.div($scope.a, $scope.b);
+            };
+
+        });
+    </script>
+</head>
+<body ng-controller="mainCtrl">
+    <form class="form-inline">
+        <div class="form-group">
+            <input type="text" ng-model="a" />
+            <input type="text" ng-model="b" /><br />
+            <input type="button" ng-click="sum()" value="+" />
+            <input type="button" ng-click="negSum()" value="-" />
+            <input type="button" ng-click="mul()" value="*" />
+            <input type="button" ng-click="div()" value="-" /><br />
+            <h3>{{result}}</h3>
+        </div>
+    </form>
+
+</body>
+</html>
