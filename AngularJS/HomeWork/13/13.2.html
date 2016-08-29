@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml" ng-app="myApp">
 <head>
     <meta charset="utf-8" />
@@ -8,7 +8,7 @@
     <script>
         var app = angular.module('myApp', [])
         .controller('mainCtrl', function ($scope) {
-            $scope.items = [ "Item 1","Item 1","Item 2","Item 3","Item 4","Item 5","Item 5","Item 5", "Item 7", "Item 6"]
+            $scope.items = [{ name: "Item 1" }, { name: "Item 1" }, { name: "Item 2" }, { name: "Item 3" }, { name: "Item 4" }, { name: "Item 5" }, { name: "Item 5" }, { name: "Item 5" }, { name: "Item 7" }, { name: "Item 6" }]
 
             $scope.searchValue = 'Item 5';
             $scope.setFilter = function (arg) {
@@ -16,7 +16,7 @@
             }
 
             $scope.filterFunc = function (item) {
-                if (item == $scope.filterValue) {
+                if (item.name == $scope.filterValue) {
                     return item;
                 }
             }
@@ -31,7 +31,7 @@
         <input type="button" value="Search" ng-click="setFilter(searchValue)" />
       <div class="container">
           <div ng-repeat="item in items|filter:filterFunc">
-              <p>{{item}}</p>
+              {{item.name}}
           </div>
       </div>
     </div>
