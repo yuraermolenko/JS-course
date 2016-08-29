@@ -1,0 +1,56 @@
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" ng-app="myApp">
+<head>
+    <meta charset="utf-8" />
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.js"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
+    <title></title>
+    <style>
+        .red {
+        color: red
+                }
+    </style>
+    <script>
+        var app = angular.module('myApp', [])
+        .controller('mainCtrl', function ($scope) {       
+            $scope.itemCount = 100;
+            $scope.items = [];
+
+            for (var i = 0; i < $scope.itemCount; i++) {
+                $scope.items[i] = "Заголовок " + i;
+            }
+          
+        })
+        .directive('makeList', function () {
+            return {
+                priority:1,
+             link:   function (scope, element, attributes) {
+                    var ul = element.append(angular.element('<ul>'));
+                    for (var i = 0; i < scope.itemCount; i++) {
+                        scope.items[i] = "Заголовок " + i;
+                        ul.append(angular.element('<li>').text(scope.items[i]));
+                    }
+                }
+            }
+        })
+         .directive("addClass", function () {
+             return {
+                 priority:2,
+                 link: function (scope, element, attributes) {
+
+                     var elements = element.find("li");
+                     for (var i = 0; i < elements.length; i++) {
+                         if (i % 2 == 0) {
+                             elements.eq(i).addClass("red");
+                         }
+                     }
+                 }
+             }
+         });
+    </script>
+</head>
+<body ng-controller="mainCtrl">
+    
+    <div make-list add-class></div>
+
+</body>
+</html>
