@@ -1,0 +1,51 @@
+﻿<html lang="en" xmlns="http://www.w3.org/1999/xhtml" ng-app="myApp">
+<head>
+    <meta charset="utf-8" />
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.js"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
+    <title></title>
+    <script>
+        var app = angular.module('myApp', [])
+        .controller('mainCtrl', function ($scope, $location, $anchorScroll) {
+            $scope.menu = [
+                { name: 'К заголовку 20', path: 'Заголовок 20' },
+                  { name: 'К заголовку 40', path: 'Заголовок 40' },
+            { name: 'К заголовку 60', path: 'Заголовок 60' },
+            { name: 'К заголовку 80', path: 'Заголовок 80' }
+            ]
+
+            $location.path("");
+
+            $scope.itemCount = 100;
+
+            $scope.items = [];
+
+            for (var i = 0; i < $scope.itemCount; i++) {
+                $scope.items[i] = "Заголовок " + i;
+            }
+            $scope.show = function (id) {
+
+                var hash = $location.hash(id);
+
+
+            }
+
+        })
+        .directive('createMenu', function () {
+            return {
+                template: '<button ng-repeat="item in menu" class="btn btn-primary" ng-click="show(item.path)">{{item.name}}</button>',
+                scope: false,
+                restrict:'E'
+            }
+        })
+
+
+
+    </script>
+</head>
+<body ng-controller="mainCtrl">
+   <create-menu></create-menu>
+    <div ng-repeat="item in items" id="{{item}}">{{item}}</div>
+
+</body>
+</html>
