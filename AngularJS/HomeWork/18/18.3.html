@@ -1,0 +1,30 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"ng-app="myApp">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.js"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
+    <script>
+        var app = angular.module('myApp', [])
+       .controller('mainCtrl', function ($scope) { 
+       })
+        .directive('dialogBox', function () {
+            return function (scope, element, attributes) {
+                var text = element.text();
+                var children = element.children();
+
+                alert(element +
+                    " Text: "
+                    + text
+                    +" Children: "
+                    + children);
+            }
+        })
+    </script>
+</head>
+<body ng-controller="mainCtrl">
+<div dialog-box>Hello World</div>
+</body>
+</html>
