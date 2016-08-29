@@ -6,11 +6,17 @@
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
     <title></title>
     <script>
-        //Не могу понять почему переключатели вопросов не работают :(
+        
         var app = angular.module('myApp', [])
-      .controller('mainCtrl', function ($scope) {
-          $scope.numbers = [1, 2, 3, 4, 5];
+      .controller('mainCtrl',['$scope', function ($scope) {
+          $scope.numbers = [0, 1, 2, 3, 4];
+          $scope.counter=0;
           $scope.test = $scope.numbers[0];
+          $scope.rightAnswers = [1, 1, 2, 1, 3];
+          $scope.myAnswers = [0, 0, 0, 0, 0];
+          $scope.send = function (answer, index) {
+              if ($scope.rightAnswers[index] == +answer) $scope.myAnswers[index] = 1;
+          };
           $scope.firstQuestion = {
               task: "Каков правильный ответ?",
               answers: ["Вариант 1", "Вариант 2", "Вариант 3", "Вариант 4"]              
@@ -39,63 +45,77 @@
                   "Очень интересно!","Без комментариев","Глупо и посредственно",'"Хочу угодить разработчику"'
               ]
           }
-      })
+          $scope.showMark = function () {
+              var mark = 0;
+              for (var i = 0; i < $scope.myAnswers.length; i++) {
+                  mark += $scope.myAnswers[i];
+              };
+              alert(mark + ' из 5!');
+          }
+         
+      }])
     </script>
 </head>
 <body ng-controller="mainCtrl">
       <form class="form-inline">
           <div class="form-group">
               <label  ng-repeat="item in numbers">
-                  <input ng-model="test" name="test" type="radio" value="{{item}}">{{item}}
+                  <input ng-model="$parent.test" name="test" type="radio" value="{{item}}">{{item}}
               </label>             
           </div>
       </form> 
     <div ng-switch on="test">
-        <div ng-switch-when="1">
+        <div ng-switch-when="0">
             <h2>{{firstQuestion.task}}</h2>
             <div class="radio">
                 <label style="display:block" ng-repeat="item in firstQuestion.answers">
-                    <input type="radio" name="question1" ng-model="question1"  value="{{$index+1}}" >
+                    <input type="radio" name="question1" ng-model="$parent.question1"  value="{{$index}}" >
                   {{item}}<br />
                 </label>            
             </div>
+            <input type="button" id="btn1" ng-click="send(question1,$parent.test)" value="Send" />
         </div>
-        <div ng-switch-when="2">
+        <div ng-switch-when="1">
             <h2>{{secondQuestion.task}}</h2>
             <div class="radio">
                 <label style="display:block" ng-repeat="item in secondQuestion.answers">
-                    <input type="radio" name="question2" ng-model="question2"  value="{{item}}">
+                    <input type="radio" name="question2" ng-model="$parent.question2"  value="{{$index}}">
                     {{item}}<br />
                 </label>
             </div>
-        </div>
-        <div ng-switch-when="3">
+            <input type="button" id="btn2" ng-click="send(question2,$parent.test)" value="Send" />
+        </div> 
+        <div ng-switch-when="2">
             <h2>{{thirdQuestion.task}}</h2>
             <div class="radio">
                 <label style="display:block" ng-repeat="item in thirdQuestion.answers">
-                    <input type="radio" name="question3" ng-model="question3"  value="{{item}}">
+                    <input type="radio" name="question3" ng-model="$parent.question3"  value="{{$index}}">
                     {{item}}<br />
                 </label>
             </div>
+            <input type="button" id="btn3" ng-click="send(question3,$parent.test)" value="Send" />
         </div>
-        <div ng-switch-when="4">
+        <div ng-switch-when="3">
             <h2>{{fourthQuestion.task}}</h2>
             <div class="radio">
                 <label style="display:block" ng-repeat="item in fourthQuestion.answers">
-                    <input type="radio" name="question4" ng-model="question4"  value="{{item}}">
+                    <input type="radio" name="question4" ng-model="$parent.question4"  value="{{$index}}">
                     {{item}}<br />
                 </label>
             </div>
+            <input type="button" id="btn4" ng-click="send(question4,$parent.test)" value="Send" />
         </div>
-        <div ng-switch-when="5">
+        <div ng-switch-when="4">
             <h2>{{fifthQuestion.task}}</h2>
             <div class="radio">
                 <label style="display:block" ng-repeat="item in fifthQuestion.answers">
-                    <input type="radio" name="question5" ng-model="question5"  value="{{item}}">
+                    <input type="radio" name="question5" ng-model="$parent.question5"  value="{{$index}}">
                     {{item}}<br />
                 </label>
             </div>
+            <input type="button" id="btn5" ng-click="send(question5,$parent.test)" value="Send" />
         </div>
     </div> 
+    <input type="button" ng-click="showMark()" value="Результат" />
 </body>
 </html>
