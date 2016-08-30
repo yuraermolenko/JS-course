@@ -1,0 +1,50 @@
+﻿<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" ng-app="myApp">
+<head>
+    <meta charset="utf-8" />
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.js"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
+    <title></title>
+    <script>
+        var app = angular.module('myApp', [])      
+      .directive('countDir', function () {
+          return {
+              restrict: 'A',
+              scope: true,
+              template: '<input type="button" class="btn-lg btn-success" ng-click="startCounter()" value="Start counter"> <h1>{{counter}}</h1> ',
+              controller: function ($scope, $interval) {
+                  $scope.counter = 0;
+                  var interval;
+                  this.makeCount = function () {
+                      $scope.counter++;
+                      this.myCounter = $scope.counter;
+                  };
+                  var self = this;
+                  $scope.startCounter = function () {
+                      interval = $interval(self.makeCount, 1000)
+                  }
+              }
+          }
+      })
+        .directive('secondDir', function () {
+            return {
+                scope: true,
+                require: 'countDir',
+                link: function (scope, elem, attrs, countDirCtrl) {
+                    countDirCtrl.makeCount = function () {
+                        countDirCtrl.myCounter = scope.counter;
+                        console.log(countDirCtrl.myCounter)
+                        scope.counter++;
+                        
+                    }
+
+                }
+            }
+        })
+    </script>
+</head>
+<body>
+        <div count-dir second-dir>
+        </div>
+</body>
+</html>
